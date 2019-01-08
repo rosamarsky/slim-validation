@@ -1,0 +1,25 @@
+{
+    "name": "rosamarsky/slim-validation",
+    "description": "Simple validation for Slim framework",
+    "type": "library",
+    "keywords": ["slim", "simple", "validation", "validator"],
+    "homepage": "https://github.com/rosamarsky/slim-validation",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roman Samarsky",
+            "email": "rosamarsky@gmail.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/rosamarsky/slim-validation/issues"
+    },
+    "require": {
+        "php": ">=5.6.0",
+        "slim/slim": "~3.0",
+        "respect/validation": "^1.1"
+    },
+    "autoload": {
+        "files": ["src/validation.php"]
+    }
+}
