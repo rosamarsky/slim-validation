@@ -1,6 +1,6 @@
 ## Simple validation for Slim framework
 
-> Validation library for Slim Framework based on [Respect/Validation] [respect-validation].
+> Validation library for Slim Framework based on [Respect/Validation](https://github.com/Respect/Validation).
 
 ## Installation 
     composer require rosamarsky/slim-validation
