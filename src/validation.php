@@ -13,19 +13,21 @@ if (! function_exists('validator')) {
                 v::allOf(...$rules)->assert($request->getParsedBody());
 
                 return $next($request, $response);
-            } catch (NestedValidationException $exception) {
+            } catch (NestedValidationException $nestedException) {
                 $violations = [];
 
-                foreach ($exception as $e) {
-                    if ($e->guessId() === 'allOf') continue;
+                foreach ($nestedException as $exception) {
+                    if (in_array($exception->guessId(), ['allOf', 'oneOf', 'noneOf'])) {
+                        continue;
+                    }
 
-                    $violations[$e->getName()][] = $e->getMessage();
+                    $violations[$exception->getName()][] = $exception->getMessage();
                 }
 
                 return $response
                     ->withStatus(StatusCode::HTTP_NOT_ACCEPTABLE)
                     ->withJson([
-                        'message' => 'Validation failed.',
+                        'errorCode' => 'PASSED_INVALID_DATA',
                         'violations' => $violations,
                     ]);
             }
